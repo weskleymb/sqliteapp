@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SqliteApp\SqliteApp.csproj" />
     <ProjectReference Include="..\SqliteApp\SqliteApp\SqliteApp.csproj" />
   </ItemGroup>
 

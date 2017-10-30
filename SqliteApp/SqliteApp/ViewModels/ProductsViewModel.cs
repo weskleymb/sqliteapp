@@ -52,7 +52,7 @@ namespace SqliteApp.ViewModels
                         Title = ProductTitle,
                         Price = ProductPrice,
                     };
-                    await _productsRepository.AddProductAsync(product);
+                    await _productsRepository.InsertProductAsync(product);
                     Products = await _productsRepository.GetProductsAsync();
                 });
             }
