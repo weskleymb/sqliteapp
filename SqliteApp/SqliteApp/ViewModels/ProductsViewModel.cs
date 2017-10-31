@@ -12,8 +12,11 @@ namespace SqliteApp.ViewModels
     {
         private readonly IProductsRepository _productsRepository;
 
-        private IEnumerable<Product> _products;
-        public IEnumerable<Product> Products
+        public string ProductTitle { get; set; }
+        public double ProductPrice { get; set; }
+
+        private IList<Product> _products;
+        public IList<Product> Products
         {
             get
             {
@@ -25,18 +28,14 @@ namespace SqliteApp.ViewModels
                 OnPropertyChanged();
             }
         }
-
-        public double ProductPrice { get; set; }
-
-        public string ProductTitle { get; set; }
-
+        
         public ICommand RefreshCommand
         {
             get
             {
-                return new Command(async () =>
+                return new Command(() =>
                 {
-                    Products = await _productsRepository.GetProductsAsync();
+                    Products = _productsRepository.GetProductsAsync();
                 });
             }
         }
@@ -45,15 +44,15 @@ namespace SqliteApp.ViewModels
         {
             get
             {
-                return new Command(async () =>
+                return new Command(() =>
                 {
                     var product = new Product
                     {
                         Title = ProductTitle,
                         Price = ProductPrice,
                     };
-                    await _productsRepository.InsertProductAsync(product);
-                    Products = await _productsRepository.GetProductsAsync();
+                    _productsRepository.InsertProductAsync(product);
+                    Products = _productsRepository.GetProductsAsync();
                 });
             }
         }
@@ -61,10 +60,10 @@ namespace SqliteApp.ViewModels
         public ProductsViewModel(IProductsRepository productsRepository)
         {
             _productsRepository = productsRepository;
+            Products = _productsRepository.GetProductsAsync();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

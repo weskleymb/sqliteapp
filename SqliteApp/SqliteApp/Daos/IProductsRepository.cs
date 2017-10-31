@@ -8,13 +8,13 @@ namespace SqliteApp.Daos
     public interface IProductsRepository
     {
 
-        Task<bool> InsertProductAsync(Product product);
+        Boolean InsertProductAsync(Product product);
 
         Task<bool> DeleteProductAsync(int id);
 
         Task<bool> UpdateProductAsync(Product product);
 
-        Task<IEnumerable<Product>> GetProductsAsync();
+        IList<Product> GetProductsAsync();
 
         Task<Product> GetProductByIdAsync(int id);
 
