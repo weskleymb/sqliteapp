@@ -7,15 +7,15 @@
 
     <StackLayout Spacing="10" Padding="20">
 
-        <Entry Text="{Binding ProductTitle}" />
-        <Entry Text="{Binding ProductPrice}" />
+        <Entry x:Name="Title" Text="{Binding Product.Title}" Placeholder="Title" Keyboard="Default" />
+        <Entry x:Name="Price" Text="{Binding Product.Price}" Placeholder="Price" Keyboard="Numeric" />
 
         <Button Text="Add Product" TextColor="White" BackgroundColor="DodgerBlue" FontSize="22" Command="{Binding AddCommand}" />
         <!--
         <Button Text="Refresh Products" TextColor="White" BackgroundColor="Fuchsia" FontSize="22" Command="{Binding RefreshCommand}" />
         -->
         
-        <ListView ItemsSource="{Binding Products}" />
+        <ListView x:Name="Products" ItemsSource="{Binding Products}" />
 
     </StackLayout>
 

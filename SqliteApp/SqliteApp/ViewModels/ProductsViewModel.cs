@@ -12,8 +12,19 @@ namespace SqliteApp.ViewModels
     {
         private readonly IProductsRepository _productsRepository;
 
-        public string ProductTitle { get; set; }
-        public double ProductPrice { get; set; }
+        private Product _product;
+        public Product Product
+        {
+            get
+            {
+                return _product;
+            }
+            set
+            {
+                _product = value;
+                OnPropertyChanged();
+            }
+        }
 
         private IList<Product> _products;
         public IList<Product> Products
@@ -28,6 +39,8 @@ namespace SqliteApp.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        public bool Cursor { get; set; }
         
         public ICommand RefreshCommand
         {
@@ -46,13 +59,10 @@ namespace SqliteApp.ViewModels
             {
                 return new Command(() =>
                 {
-                    var product = new Product
-                    {
-                        Title = ProductTitle,
-                        Price = ProductPrice,
-                    };
-                    _productsRepository.InsertProductAsync(product);
-                    Products = _productsRepository.GetProductsAsync();
+                    _productsRepository.InsertProductAsync(this.Product);
+                    this.Products = _productsRepository.GetProductsAsync();
+                    this.Product = new Product();
+                    this.Cursor = true;
                 });
             }
         }
@@ -60,7 +70,8 @@ namespace SqliteApp.ViewModels
         public ProductsViewModel(IProductsRepository productsRepository)
         {
             _productsRepository = productsRepository;
-            Products = _productsRepository.GetProductsAsync();
+            this.Product = new Product();
+            this.Products = _productsRepository.GetProductsAsync();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

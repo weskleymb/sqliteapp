@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqliteApp.Android", "SqliteApp\SqliteApp.Android\SqliteApp.Android.csproj", "{BAF00777-948F-44B7-B10A-1BF4542C110C}"
 EndProject
@@ -98,6 +98,7 @@ Global
 		{E11F6A4B-62D4-4CE3-A161-FF1392C17F98}.AppStore|iPhoneSimulator.ActiveCfg = AppStore|iPhoneSimulator
 		{E11F6A4B-62D4-4CE3-A161-FF1392C17F98}.AppStore|iPhoneSimulator.Build.0 = AppStore|iPhoneSimulator
 		{E11F6A4B-62D4-4CE3-A161-FF1392C17F98}.Debug|Any CPU.ActiveCfg = Debug|iPhoneSimulator
+		{E11F6A4B-62D4-4CE3-A161-FF1392C17F98}.Debug|Any CPU.Build.0 = Debug|iPhoneSimulator
 		{E11F6A4B-62D4-4CE3-A161-FF1392C17F98}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{E11F6A4B-62D4-4CE3-A161-FF1392C17F98}.Debug|iPhone.Build.0 = Debug|iPhone
 		{E11F6A4B-62D4-4CE3-A161-FF1392C17F98}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
